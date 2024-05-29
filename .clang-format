@@ -1,8 +1,23 @@
-BasedOnStyle: LLVM
-IndentWidth: 4
----
+BasedOnStyle: Google
+AccessModifierOffset: '-4'
+AlignAfterOpenBracket: Align
+AlignConsecutiveMacros: 'true'
+AlignConsecutiveAssignments: 'true'
+AlignConsecutiveDeclarations: 'true'
+AlignEscapedNewlines: Left
+AlignTrailingComments: 'true'
+AllowShortBlocksOnASingleLine: 'false'
+AllowShortCaseLabelsOnASingleLine: 'false'
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLambdasOnASingleLine: None
+AllowShortLoopsOnASingleLine: 'false'
+AlwaysBreakAfterReturnType: None
+BinPackArguments: 'true'
+BinPackParameters: 'true'
+BreakBeforeBraces: Linux
+ColumnLimit: '110'
+ContinuationIndentWidth: '4'
+IndentCaseLabels: 'true'
+IndentWidth: '4'
 Language: Cpp
-# Force pointers to the type for C++.
-DerivePointerAlignment: false
-PointerAlignment: Left
----

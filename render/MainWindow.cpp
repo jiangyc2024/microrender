@@ -3,20 +3,20 @@
 #include <QDebug>
 #include <QPainter>
 
-
-MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
-{
+MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
     renderThread = new RenderThread(this);
     renderThread->start();
-    connect(renderThread, &RenderThread::renderFrame, this, &MainWindow::onRenderFrame);
-    
+    connect(renderThread, &RenderThread::renderFrame, this,
+            &MainWindow::onRenderFrame);
+    setFixedHeight(600);
+    setFixedWidth(800);
 }
 
 MainWindow::~MainWindow() {
-   if(renderThread &&renderThread->isRunning()){
-       renderThread->stop();
-   }
-   renderThread->wait();
+    if (renderThread && renderThread->isRunning()) {
+        renderThread->stop();
+    }
+    renderThread->wait();
 }
 
 void MainWindow::onRenderFrame(const QImage& image) {
@@ -25,10 +25,8 @@ void MainWindow::onRenderFrame(const QImage& image) {
     repaint();
 }
 
-void MainWindow::paintEvent(QPaintEvent* event) 
-{
+void MainWindow::paintEvent(QPaintEvent* event) {
     QMainWindow::paintEvent(event);
     QPainter painter(this);
     painter.drawImage(0, 0, m_image);
-    
 }

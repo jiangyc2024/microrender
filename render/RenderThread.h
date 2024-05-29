@@ -4,19 +4,30 @@
 #include <QImage>
 #include <QThread>
 
-class RenderThread : public QThread {
+#include "HittableList.h"
+#include "Ray.h"
+#include "Vec.h"
+#include "camera.h"
+class RenderThread : public QThread
+{
     Q_OBJECT
-  public:
-    RenderThread(QObject* parent = nullptr) : QThread(parent) {}
+public:
+    RenderThread(QObject* parent = nullptr);
 
-  public:
+public:
     void run() override;
-  public Q_SLOTS:
-    void stop() { m_stop = true; }
-    void render(QImage& image);
-  Q_SIGNALS:
+public Q_SLOTS:
+    void stop()
+    {
+        m_stop = true;
+    }
+
+Q_SIGNALS:
     void renderFrame(const QImage& image);
 
-  private:
+private:
     bool m_stop = false;
+
+    HittableList world;
+    camera       cam;
 };

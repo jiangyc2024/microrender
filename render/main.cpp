@@ -1,19 +1,25 @@
-#include <QApplication>
 #include "MainWindow.h"
-#include <iostream>
-#include <format>
+#include "Vec.h"
 #include <Eigen/Eigen>
+#include <QApplication>
+#include <format>
+#include <iostream>
 
-
-void test(){
-    Eigen::Matrix<int, 2,2> a;
-    a<<1,2,3,4;
-    a(1,1) = 100;
-    std::cout << a(0,0)<<std::endl;
+void test() {
+    Vec3f a(1, 2, 3);
+    Vec3f b(4, 5, 6);
+    // add
+    std::cout << "add:" << a + b << std::endl;
+    // broadcast
+    std::cout << "broadcast:" << a * 3 << std::endl;
+    // dot
+    std::cout << "dot:" << a.dot(b) << std::endl;
+    // cross
+    std::cout << "norm:" << a.squaredNorm() << std::endl;
 }
 
-int main(int argc, char **argv)
-{
+int main(int argc, char** argv) {
+    test();
     QApplication app(argc, argv);
     MainWindow mainWindow;
 
